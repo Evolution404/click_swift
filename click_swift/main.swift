@@ -8,15 +8,22 @@
 
 import Foundation
 
-func clickPoint(p: CGPoint){
-    let e = CGEvent(mouseEventSource: nil, mouseType: .leftMouseDown, mouseCursorPosition: p, mouseButton: .left)
-    e?.post(tap: .cghidEventTap)
-}
-
 // 分割两个屏幕的位置
 let SPLIT_X:Double = 1920
 let leftPoint = CGPoint(x: 907, y: 226)
 let rightPoint = CGPoint(x: 2659, y: 113)
+// 鼠标点击持续时间
+let waitTime = 0.05
+
+func clickPoint(p: CGPoint){
+    let eDown = CGEvent(mouseEventSource: nil, mouseType: .leftMouseDown, mouseCursorPosition: p, mouseButton: .left)
+    eDown?.post(tap: .cghidEventTap)
+    let second: Double = 1000000
+    usleep(useconds_t(waitTime * second)) //will sleep for 2 milliseconds (.002 seconds)
+    let eUp = CGEvent(mouseEventSource: nil, mouseType: .leftMouseUp, mouseCursorPosition: p, mouseButton: .left)
+    eUp?.post(tap: .cghidEventTap)
+}
+
 
 
 var e = CGEvent(source: nil)
@@ -28,5 +35,3 @@ if let p = point{
         clickPoint(p:leftPoint)
     }
 }
-
-
