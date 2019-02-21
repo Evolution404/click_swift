@@ -9,9 +9,9 @@
 import Foundation
 
 // 分割两个屏幕的位置
-let SPLIT_X:Double = 1920
-let leftPoint = CGPoint(x: 907, y: 226)
-let rightPoint = CGPoint(x: 2659, y: 113)
+let SPLIT_X:Double = 0
+let leftPoint = CGPoint(x: -777, y: 226)
+let rightPoint = CGPoint(x: 981, y: 113)
 // 鼠标点击持续时间
 let waitTime = 0.05
 
